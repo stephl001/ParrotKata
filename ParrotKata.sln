@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ParrotKata", "ParrotKata\ParrotKata.fsproj", "{BE4D50DF-A54A-41C0-9AE7-8D262322C161}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ParrotKata.Tests", "ParrotKata.Tests\ParrotKata.Tests.fsproj", "{5A1248EC-4AA9-4BF6-A119-4C472B6BA9B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BE4D50DF-A54A-41C0-9AE7-8D262322C161}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE4D50DF-A54A-41C0-9AE7-8D262322C161}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE4D50DF-A54A-41C0-9AE7-8D262322C161}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A1248EC-4AA9-4BF6-A119-4C472B6BA9B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A1248EC-4AA9-4BF6-A119-4C472B6BA9B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A1248EC-4AA9-4BF6-A119-4C472B6BA9B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A1248EC-4AA9-4BF6-A119-4C472B6BA9B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
