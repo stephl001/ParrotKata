@@ -13,17 +13,17 @@ type ParrotTests() =
 
     [<Fact>]
     let ``when getting the speed of an African parrot with one coconut, the speed should be 3.0``() =
-        let parrot = AfricanParrot WithOneCoconut
+        let parrot = AfricanParrot (Coconuts 1)
         Assert.Equal(3.0, getParrotSpeed parrot)
 
     [<Fact>]
     let ``when getting the speed of an African parrot with two coconuts, the speed should be 0.0``() =
-        let parrot = AfricanParrot WithTwoCoconuts
+        let parrot = AfricanParrot (Coconuts 2)
         Assert.Equal(0.0, getParrotSpeed parrot)
 
     [<Fact>]
     let ``when getting the speed of an African parrot with no coconut, the speed should be 12.0``() =
-        let parrot = AfricanParrot WithNoCoconut
+        let parrot = AfricanParrot (Coconuts 0)
         Assert.Equal(12.0, getParrotSpeed parrot)
 
     [<Fact>]

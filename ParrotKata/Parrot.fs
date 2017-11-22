@@ -2,59 +2,26 @@
 
 module ParrotSpeed =
 
-    type ParrotWithCoconuts = WithNoCoconut | WithOneCoconut | WithTwoCoconuts
+    type ParrotWithCoconuts = Coconuts of int
     type ParrotFeet = Nailed | Unnailed
     type Voltage = Voltage of float
-    type Parrot = EuropeanParrot | AfricanParrot of ParrotWithCoconuts | NorwegianBlue of ParrotFeet*Voltage
-
-    let getParrotSpeed parrot = 
-        match parrot with
-        | EuropeanParrot -> 12.0
-        | AfricanParrot WithOneCoconut -> 3.0
-        | AfricanParrot WithTwoCoconuts -> 0.0
-        | AfricanParrot WithNoCoconut -> 12.0
-        | NorwegianBlue (Nailed,Voltage 0.0) -> 0.0
-        | NorwegianBlue (Unnailed,Voltage 1.5) -> 18.0
-        | NorwegianBlue (Unnailed,Voltage 4.0) -> 24.0
     
+    type Parrot = 
+        | EuropeanParrot 
+        | AfricanParrot of ParrotWithCoconuts 
+        | NorwegianBlue of ParrotFeet*Voltage
 
-(*
-public class Parrot {
+    let baseSpeed = 12.0
+    let loadFactor = 9.0
 
-    private ParrotTypeEnum type;
-    private int numberOfCoconuts = 0;
-    private double voltage;
-    private boolean isNailed;
+    let limitPositiveSpeed = max 0.0
+    let limitMaximumSpeed24 = min 24.0
 
-    public Parrot(ParrotTypeEnum _type, int numberOfCoconuts, double voltage, boolean isNailed) {
-        this.type = _type;
-        this.numberOfCoconuts = numberOfCoconuts;
-        this.voltage = voltage;
-        this.isNailed = isNailed;
-    }
+    let coconutSpeed coconuts = (baseSpeed - loadFactor*(float coconuts)) |> limitPositiveSpeed
+    let voltageSpeed voltage = (baseSpeed * voltage) |> limitMaximumSpeed24
 
-    public double getSpeed() {
-        switch (type) {
-            case EUROPEAN:
-                return getBaseSpeed();
-            case AFRICAN:
-                return Math.max(0, getBaseSpeed() - getLoadFactor() * numberOfCoconuts);
-            case NORWEGIAN_BLUE:
-                return (isNailed) ? 0 : getBaseSpeed(voltage);
-        }
-        throw new RuntimeException("Should be unreachable");
-    }
-
-    private double getBaseSpeed(double voltage) {
-        return Math.min(24.0, voltage * getBaseSpeed());
-    }
-
-    private double getLoadFactor() {
-        return 9.0;
-    }
-
-    private double getBaseSpeed() {
-        return 12.0;
-    }
-}
-*)
+    let getParrotSpeed = function
+        | EuropeanParrot -> baseSpeed
+        | AfricanParrot (Coconuts x) -> coconutSpeed x
+        | NorwegianBlue (Nailed,Voltage _) -> 0.0
+        | NorwegianBlue (Unnailed,Voltage x) -> voltageSpeed x
